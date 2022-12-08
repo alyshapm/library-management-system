@@ -1,2 +1,2 @@
-# library-management-system
+# Library Management System
 Final Project for Database Technology
