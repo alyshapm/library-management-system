@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `adminid` int(10) NOT NULL,
   `adminfname` varchar(20) NOT NULL,
-  `adminelname` varchar(20) NOT NULL,
-  `email` int(11) NOT NULL,
+  `adminlname` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
   `department` varchar(100) NOT NULL,
   `phoneno` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `author` (
-  `authorid` int(11) NOT NULL,
+  `authorid` int(10) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL,
   `phone` int(11) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `author` (
 CREATE TABLE `book` (
   `bookid` int(10) NOT NULL,
   `title` varchar(100) NOT NULL,
-  `authorid` int(11) NOT NULL,
+  `authorid` int(10) NOT NULL,
   `serialno` varchar(20) NOT NULL,
   `publishid` varchar(20) NOT NULL,
   `qty` int(11) NOT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE `book_borrowreturn` (
 --
 
 CREATE TABLE `publisher` (
-  `publishid` varchar(20) NOT NULL,
+  `publishid` int(10) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -115,11 +115,10 @@ CREATE TABLE `user` (
   `userid` int(10) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
-  `major` varchar(100) NOT NULL,
   `birthday` date NOT NULL,
   `email` varchar(100) NOT NULL,
-  `year` int(11) NOT NULL,
   `address` varchar(100) NOT NULL
+  'regisdate' date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
