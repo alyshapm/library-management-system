@@ -125,8 +125,8 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userid`, `fname`, `lname`, `major`, `birthday`, `email`, `year`, `address`) VALUES
-(12345, 'John', 'Smith', 'Computer Science', '2000-01-01', 'johnsmith@mail.com', 2, 'Jl. Jenderal Sudirman');
+INSERT INTO `user` (`userid`, `fname`, `lname`, `birthday`, `email`, `address`, 'regisdate') VALUES
+(20000101, 'John', 'Smith', '2000-01-01', 'johnsmith@mail.com', 'Jl. Jenderal Sudirman', '2022-10-05');
 
 --
 -- Indexes for dumped tables
@@ -187,7 +187,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `authorid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `authorid` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `book_borrowreturn`
