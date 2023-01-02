@@ -47,12 +47,12 @@ public class ViewOverdue extends javax.swing.JFrame {
             
             
             while(rs.next()){
-                int id = rs.getInt("borrowid");
-                int bookId = rs.getInt("bookid");
-                int userId = rs.getInt("userid");
-                int adminId = rs.getInt("adminid");
-                String issueDate = rs.getString("borrowdate");
-                String dueDate = rs.getString("returndate");
+                int id = rs.getInt("borrowId");
+                int bookId = rs.getInt("bookId");
+                int userId = rs.getInt("userId");
+                int adminId = rs.getInt("adminId");
+                String issueDate = rs.getString("borrowDate");
+                String dueDate = rs.getString("returnDate");
                 String status = rs.getString("status");
                 int fine = rs.getInt("fine");
                 

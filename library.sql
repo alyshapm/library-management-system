@@ -41,6 +41,7 @@ CREATE TABLE `user` (
 -- Table structure for table `admin`
 --
 
+/*
 CREATE TABLE `admin` (
   `adminId` int(10) NOT NULL,
   `adminFname` varchar(20) NOT NULL,
@@ -51,6 +52,7 @@ CREATE TABLE `admin` (
   `password` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+*/
 
 --
 -- Table structure for table `author`
@@ -69,7 +71,7 @@ CREATE TABLE `author` (
 CREATE TABLE `book` (
   `bookId` int(10) NOT NULL,
   `title` varchar(100) NOT NULL,
-  `authorId` int(10) NOT NULL,
+  `author_name` varchar(50) NOT NULL,
   `publishId` varchar(10) NOT NULL,
   `serialNo` varchar(20) NOT NULL,
   `quantity` int(11) NOT NULL,

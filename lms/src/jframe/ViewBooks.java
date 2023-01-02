@@ -39,10 +39,10 @@ public class ViewBooks extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery("select * from book");
             
             while(rs.next()){
-                String bookId = rs.getString("bookid"); // gets book id from DB
+                String bookId = rs.getString("bookId"); // gets book id from DB
                 String bookName = rs.getString("title");
                 String author = rs.getString("author_name");
-                int quantity = rs.getInt("qty");
+                int quantity = rs.getInt("quantity");
                 String publisher = rs.getString("publisher");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
@@ -77,10 +77,10 @@ public class ViewBooks extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()) {
-                String bookId = rs.getString("bookid"); // gets book id from DB
+                String bookId = rs.getString("bookId"); // gets book id from DB
                 String bookName = rs.getString("title");
                 String author = rs.getString("author_name");
-                int quantity = rs.getInt("qty");
+                int quantity = rs.getInt("quantity");
                 String publisher = rs.getString("publisher");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
@@ -112,10 +112,10 @@ public class ViewBooks extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()) {
-                String bookId = rs.getString("bookid"); // gets book id from DB
+                String bookId = rs.getString("bookId"); // gets book id from DB
                 String bookName = rs.getString("title");
                 String author = rs.getString("author_name");
-                int quantity = rs.getInt("qty");
+                int quantity = rs.getInt("quantity");
                 String publisher = rs.getString("publisher");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
@@ -149,10 +149,10 @@ public class ViewBooks extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()) {
-                String bookId = rs.getString("bookid"); // gets book id from DB
+                String bookId = rs.getString("bookId"); // gets book id from DB
                 String bookName = rs.getString("title");
                 String author = rs.getString("author_name");
-                int quantity = rs.getInt("qty");
+                int quantity = rs.getInt("quantity");
                 String publisher = rs.getString("publisher");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
@@ -186,10 +186,10 @@ public class ViewBooks extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()) {
-                String bookId = rs.getString("bookid"); // gets book id fro'm DB
+                String bookId = rs.getString("bookId"); // gets book id fro'm DB
                 String bookName = rs.getString("title");
                 String author = rs.getString("author_name");
-                int quantity = rs.getInt("qty");
+                int quantity = rs.getInt("quantity");
                 String publisher = rs.getString("publisher");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");

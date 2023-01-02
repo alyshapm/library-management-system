@@ -39,11 +39,11 @@ public class RequestReturn extends javax.swing.JFrame {
             
             ResultSet rs = pst.executeQuery();
             if (rs.next()){
-                lbl_issueId.setText(rs.getString("borrowid"));
-                lbl_bookName.setText(rs.getString("bookid"));
-                lbl_studentName.setText(rs.getString("userid"));
-                lbl_issueDate.setText(rs.getString("borrowdate"));
-                lbl_dueDate.setText(rs.getString("returndate"));
+                lbl_issueId.setText(rs.getString("borrowId"));
+                lbl_bookName.setText(rs.getString("bookId"));
+                lbl_studentName.setText(rs.getString("userId"));
+                lbl_issueDate.setText(rs.getString("borrowDate"));
+                lbl_dueDate.setText(rs.getString("returnDate"));
                 lbl_fine.setText(rs.getString("fine"));
                 lbl_bookError.setText("");
             } else {

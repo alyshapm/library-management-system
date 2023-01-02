@@ -39,12 +39,12 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery("select * from book_borrowreturn");
             
             while(rs.next()){
-                int id = rs.getInt("borrowid");
-                int bookId = rs.getInt("bookid");
-                int userId = rs.getInt("userid");
-                int adminId = rs.getInt("adminid");
-                String issueDate = rs.getString("borrowdate");
-                String dueDate = rs.getString("returndate");
+                int id = rs.getInt("borrowId");
+                int bookId = rs.getInt("bookId");
+                int userId = rs.getInt("userId");
+                int adminId = rs.getInt("adminId");
+                String issueDate = rs.getString("borrowDate");
+                String dueDate = rs.getString("returnDate");
                 String status = rs.getString("status");
                 
                 Object[] obj = {id, bookId, userId, adminId, issueDate, dueDate, status};
@@ -88,12 +88,12 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "No record found!");
             } else {
                 while(rs.next()){
-                    int id = rs.getInt("borrowid");
-                    int bookId = rs.getInt("bookid");
-                    int userId = rs.getInt("userid");
-                    int adminId = rs.getInt("adminid");
-                    String issueDate = rs.getString("borrowdate");
-                    String dueDate = rs.getString("returndate");
+                    int id = rs.getInt("borrowId");
+                    int bookId = rs.getInt("bookId");
+                    int userId = rs.getInt("userId");
+                    int adminId = rs.getInt("adminId");
+                    String issueDate = rs.getString("borrowDate");
+                    String dueDate = rs.getString("returnDate");
                     String status = rs.getString("status");
                 
                 Object[] obj = {id, bookId, userId, adminId, issueDate, dueDate, status};
@@ -121,12 +121,12 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()) {
-                int id = rs.getInt("borrowid");
-                int bookId = rs.getInt("bookid");
-                int userId = rs.getInt("userid");
-                int adminId = rs.getInt("adminid");
-                String issueDate = rs.getString("borrowdate");
-                String dueDate = rs.getString("returndate");
+                int id = rs.getInt("borrowId");
+                int bookId = rs.getInt("bookId");
+                int userId = rs.getInt("userId");
+                int adminId = rs.getInt("adminId");
+                String issueDate = rs.getString("borrowDate");
+                String dueDate = rs.getString("returnDate");
                 String status = rs.getString("status");
                 
                 Object[] obj = {id, bookId, userId, adminId, issueDate, dueDate, status};
@@ -173,12 +173,12 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
 //            }
             
             while(rs.next()) {
-                int id = rs.getInt("borrowid");
-                int bookId = rs.getInt("bookid");
-                int userId = rs.getInt("userid");
-                int adminId = rs.getInt("adminid");
-                String issueDate = rs.getString("borrowdate");
-                String dueDate = rs.getString("returndate");
+                int id = rs.getInt("borrowId");
+                int bookId = rs.getInt("bookId");
+                int userId = rs.getInt("userId");
+                int adminId = rs.getInt("adminId");
+                String issueDate = rs.getString("borrowDate");
+                String dueDate = rs.getString("returnDate");
                 String status = rs.getString("status");
                 
                 Object[] obj = {id, bookId, userId, adminId, issueDate, dueDate, status};

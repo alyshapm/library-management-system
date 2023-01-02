@@ -36,10 +36,10 @@ public class RequestIssue extends javax.swing.JFrame {
             
             // iterate through all the information and display
             if(rs.next()){
-                lbl_bookId.setText(rs.getString("bookid"));
+                lbl_bookId.setText(rs.getString("bookId"));
                 lbl_bookName.setText(rs.getString("title"));
                 lbl_author.setText(rs.getString("author_name"));
-                lbl_quantity.setText(rs.getString("qty"));
+                lbl_quantity.setText(rs.getString("quantity"));
             } else {
                 lbl_bookError.setText("Invalid book ID!");
             }
@@ -61,12 +61,12 @@ public class RequestIssue extends javax.swing.JFrame {
             
             // iterate through all the information and display
             if(rs.next()){
-                lbl_studentId.setText(rs.getString("userid"));
-                lbl_studentName.setText(rs.getString("fname"));
+                lbl_studentId.setText(rs.getString("userId"));
+                lbl_studentName.setText(rs.getString("userFname"));
                 lbl_course.setText(rs.getString("major"));
                 lbl_branch.setText(rs.getString("semester"));
             } else {
-                lbl_studentError.setText("Invalid student ID!");
+                lbl_studentError.setText("Invalid user ID!");
             }
         } catch (Exception e) {
             e.printStackTrace();
