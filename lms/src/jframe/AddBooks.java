@@ -33,7 +33,7 @@ public class AddBooks extends javax.swing.JFrame {
         displayBookToTable();
     }
     
-    // display book data into table
+    // Displays the book data into a table view
     public void displayBookToTable(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -42,16 +42,17 @@ public class AddBooks extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery("select * from book");
             
             while(rs.next()){
-                String bookId = rs.getString("bookid"); // gets book id from DB
+                // Gets values from the database
+                String bookId = rs.getString("bookId"); 
                 String title = rs.getString("title");
                 String author = rs.getString("author_name");
-                String serialNo = rs.getString("serialno");
+                String serialNo = rs.getString("serialNo");
                 String publisher = rs.getString("publisher");
-                int quantity = rs.getInt("qty");
-                String regisDate = rs.getString("regisdate");
-                String regisId = rs.getString("regisby");
+                int quantity = rs.getInt("quantity");
+                String regisDate = rs.getString("regisDate");
+                String regisId = rs.getString("regisBy");
                 int avail = rs.getInt("availability");
-                int shelf = rs.getInt("shelfno");
+                int shelf = rs.getInt("shelfNo");
                 int floor = rs.getInt("floor");
                 String genre = rs.getString("genre");
                 
@@ -64,6 +65,7 @@ public class AddBooks extends javax.swing.JFrame {
         }
     }
     
+    // Insert a book into the database
     public boolean insertBook(){
         boolean isAdded = false;
         bookId = Integer.parseInt(txt_bookId.getText());

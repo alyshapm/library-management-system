@@ -24,102 +24,93 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `userId` int(10) NOT NULL,
+  `userFname` varchar(50) NOT NULL,
+  `userLname` varchar(50) NOT NULL,
+  `birthday` date NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `address` varchar(100) NOT NULL
+  'regisDate' date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
 -- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
-  `adminid` int(10) NOT NULL,
-  `adminfname` varchar(20) NOT NULL,
-  `adminlname` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `department` varchar(100) NOT NULL,
-  `phoneno` int(11) NOT NULL,
+  `adminId` int(10) NOT NULL,
+  `adminFname` varchar(20) NOT NULL,
+  `adminLname` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phoneNo` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `author`
 --
 
 CREATE TABLE `author` (
-  `authorid` int(10) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `phone` int(11) NOT NULL,
-  `city` varchar(20) NOT NULL,
-  `country` varchar(20) NOT NULL,
-  `zip` varchar(10) NOT NULL
+  `authorId` int(10) NOT NULL,
+  `authorFname` varchar(20) NOT NULL,
+  `authorLname` varchar(20) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `book`
 --
 
 CREATE TABLE `book` (
-  `bookid` int(10) NOT NULL,
+  `bookId` int(10) NOT NULL,
   `title` varchar(100) NOT NULL,
-  `authorid` int(10) NOT NULL,
-  `serialno` varchar(20) NOT NULL,
-  `publishid` varchar(20) NOT NULL,
-  `qty` int(11) NOT NULL,
-  `regisdate` date NOT NULL,
-  `regisby` varchar(50) NOT NULL,
+  `authorId` int(10) NOT NULL,
+  `publishId` varchar(10) NOT NULL,
+  `serialNo` varchar(20) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `regisDate` date NOT NULL,
+  `regisBy` varchar(50) NOT NULL,
   `availability` varchar(20) NOT NULL,
-  `shelfno` int(11) NOT NULL,
+  `shelfNo` int(11) NOT NULL,
   `floor` int(11) NOT NULL,
-  `genre` varchar(20) NOT NULL
+  `genre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `book_borrowreturn`
 --
 
 CREATE TABLE `book_borrowreturn` (
-  `borrowid` int(10) NOT NULL,
-  `userid` int(10) NOT NULL,
-  `bookid` int(10) NOT NULL,
-  `adminid` int(10) NOT NULL,
-  `borrowdate` date NOT NULL,
-  `returndata` date NOT NULL,
+  `borrowId` int(10) NOT NULL,
+  `userId` int(10) NOT NULL,
+  `bookId` int(10) NOT NULL,
+  `adminId` int(10) NOT NULL,
+  `borrowDate` date NOT NULL,
+  `returnDate` date NOT NULL,
   `status` varchar(10) NOT NULL,
   `fine` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `publisher`
 --
 
 CREATE TABLE `publisher` (
-  `publishid` int(10) NOT NULL,
+  `publishId` int(10) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `address` varchar(100) NOT NULL
+  `address` varchar(100) NOT NULL,
+  'email' varchar(50) NOT NULL,
+  'city' varchar(20) NOT NULL,
+  'country' varchar (20) NOT NULL,
+  'zip' int (5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `userid` int(10) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
-  `birthday` date NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `address` varchar(100) NOT NULL
-  'regisdate' date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`

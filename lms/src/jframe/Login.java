@@ -88,7 +88,7 @@ public class Login extends javax.swing.JFrame {
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "insert into admin(adminfname, adminelname, email, phoneno, username, password, address) values(?,?,?,?,?,?,?)";
+            String sql = "insert into admin(adminFname, adminLname, email, phoneNo, username, password, address) values(?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             
             pst.setString(1, fname);

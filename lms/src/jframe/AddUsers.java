@@ -42,16 +42,15 @@ public class AddUsers extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery("select * from user");
             
             while(rs.next()){
-                int studentId = rs.getInt("userid"); // gets book id from DB
-                String fName = rs.getString("fname");
-                String lName = rs.getString("lname");
-                String major = rs.getString("major");
+                int studentId = rs.getInt("userId"); // gets book id from DB
+                String fName = rs.getString("userFname");
+                String lName = rs.getString("userLname");
                 String birthday = rs.getString("birthday");
                 String email = rs.getString("email");
-                int sem = rs.getInt("semester");
                 String address = rs.getString("address");
+                String regisdate = rs.getString("regisDate");
                 
-                Object[] obj = {studentId, fName, lName, major, birthday, email, sem, address};
+                Object[] obj = {studentId, fName, lName, birthday, email, address, regisdate};
                 model =(DefaultTableModel) tbl_studentDetails.getModel(); // create a model which creates a row 
                 model.addRow(obj);
             }
@@ -72,13 +71,17 @@ public class AddUsers extends javax.swing.JFrame {
         Date uBirthday = date_birthday.getDatoFecha();
         long a = uBirthday.getTime();
         java.sql.Date birthday = new java.sql.Date(a);
+
+        Date uRegisdate = date_regisdate.getDatoFecha();
+        long b = uRegisdate.getTime();
+        java.sql.Date regisdate = new java.sql.Date(b);
        
 //        major = combo_major.getSelectedItem().toString();
 //        semester = Integer.parseInt(combo_sem.getSelectedItem().toString());
     
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "insert into user values(?, ?, ?, ?, ?, ?,)";
+            String sql = "insert into user values(?, ?, ?, ?, ?, ?, ?,)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, userId);
             pst.setString(2, fName);
@@ -86,6 +89,7 @@ public class AddUsers extends javax.swing.JFrame {
             pst.setDate(4, birthday);
             pst.setString(5, email);
             pst.setString(6, address);
+            pst.setString(7, regisdate);
             
             int rowCount = pst.executeUpdate();
             if (rowCount > 0) {
@@ -113,20 +117,26 @@ public class AddUsers extends javax.swing.JFrame {
         Date uBirthday = date_birthday.getDatoFecha();
         long a = uBirthday.getTime();
         java.sql.Date birthday = new java.sql.Date(a);
+
+        Date uRegisdate = date_regisdate.getDatoFecha();
+        long b = uRegisdate.getTime();
+        java.sql.Date regisdate = new java.sql.Date(b);
        
 //        major = combo_major.getSelectedItem().toString();
 //        semester = Integer.parseInt(combo_sem.getSelectedItem().toString());
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "update user set fname = ?, lname = ?, birthday = ?, email = ?, address = ? where userid = ?";
+            String sql = "update user set fname = ?, lname = ?, birthday = ?, email = ?, address = ?, regisdate = ? where userid = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, fName);
             pst.setString(2, lName);
             pst.setDate(3, birthday);
             pst.setString(4, email);
             pst.setString(5, address);
-            pst.setInt(6, userId);
+            pst.setDate(6, regisdate);
+            pst.setInt(7, userId);
+            
             
             int rowCount = pst.executeUpdate();
             if (rowCount > 0) {
