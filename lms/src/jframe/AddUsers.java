@@ -326,7 +326,7 @@ public class AddUsers extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
         txt_studentId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_studentId.setPlaceholder("Enter student ID...");
+        txt_studentId.setPlaceholder("Enter user ID...");
         txt_studentId.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_studentIdFocusLost(evt);
@@ -335,7 +335,7 @@ public class AddUsers extends javax.swing.JFrame {
         jPanel1.add(txt_studentId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 220, 30));
 
         jLabel4.setFont(new java.awt.Font("Shree Devanagari 714", 0, 14)); // NOI18N
-        jLabel4.setText("Student ID");
+        jLabel4.setText("User ID");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Shree Devanagari 714", 0, 14)); // NOI18N

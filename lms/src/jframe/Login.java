@@ -56,9 +56,15 @@ public class Login extends javax.swing.JFrame {
             
             ResultSet rs = pst.executeQuery();
             if (rs.next()){ // if data exists in DB, open homepage
+                String typeLogin = rs.getString("type");
+                if (typeLogin.equals("full") ){
+                    Home home = new Home();
+                    home.setVisible(true);
+                } else {
+                    HomePart home2 = new HomePart();
+                    home2.setVisible(true);
+                }
                 JOptionPane.showMessageDialog(this, "Login successful");
-                Home home = new Home();
-                home.setVisible(true);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Incorrect username or password");
@@ -78,27 +84,26 @@ public class Login extends javax.swing.JFrame {
         int phone = Integer.parseInt(txt_phone.getText());
         String address = txt_address.getText();
         
-        String department = combo_department.getSelectedItem().toString();
+//        String department = combo_department.getSelectedItem().toString();
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "insert into admin(adminfname, adminlname, email, department, phoneno, username, password, address) values(?,?,?,?,?,?,?,?)";
+            String sql = "insert into admin(adminfname, adminelname, email, phoneno, username, password, address) values(?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             
             pst.setString(1, fname);
             pst.setString(2, lname);
             pst.setString(3, email);
-            pst.setString(4, department);
-            pst.setInt(5, phone);
-            pst.setString(6, uname);
-            pst.setString(7, pwd);
-            pst.setString(8, address);
+            pst.setInt(4, phone);
+            pst.setString(5, uname);
+            pst.setString(6, pwd);
+            pst.setString(7, address);
             
             int updatedRowCount = pst.executeUpdate();
             
             if (updatedRowCount > 0){
                 JOptionPane.showMessageDialog(this, "Recorded Inserted Successfully");
-                LoginPage page = new LoginPage();
+                Login page = new Login();
                 page.setVisible(true);
                 dispose();
             } else {
@@ -192,8 +197,6 @@ public class Login extends javax.swing.JFrame {
         txt_lname = new app.bolivia.swing.JCTextField();
         jLabel12 = new javax.swing.JLabel();
         txt_email = new app.bolivia.swing.JCTextField();
-        jLabel6 = new javax.swing.JLabel();
-        combo_department = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         txt_address = new app.bolivia.swing.JCTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -288,14 +291,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 290, 220, 30));
-
-        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel6.setText("Select department");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, -1, 20));
-
-        combo_department.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        combo_department.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Computer Science", "International Business", "Business, Management and Marketing", "Graphic Design", "Fashion", "Business Information System", "Communication", "Finance" }));
-        jPanel1.add(combo_department, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 300, 30));
 
         jLabel13.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel13.setText("Address");
@@ -461,7 +456,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> combo_department;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -471,7 +465,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

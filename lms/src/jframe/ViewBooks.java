@@ -46,8 +46,9 @@ public class ViewBooks extends javax.swing.JFrame {
                 String publisher = rs.getString("publisher");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
+                String genre = rs.getString("genre");
                 
-                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor};
+                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor, genre};
                 model =(DefaultTableModel) tbl_bookDetails.getModel(); // create a model which creates a row 
                 model.addRow(obj);
             }
@@ -83,8 +84,9 @@ public class ViewBooks extends javax.swing.JFrame {
                 String publisher = rs.getString("publisher");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
+                String genre = rs.getString("genre");
 
-                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor};
+                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor, genre};
                 model =(DefaultTableModel) tbl_bookDetails.getModel(); // create a model which creates a row 
                 model.addRow(obj);
             }
@@ -117,8 +119,9 @@ public class ViewBooks extends javax.swing.JFrame {
                 String publisher = rs.getString("publisher");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
+                String genre = rs.getString("genre");
 
-                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor};
+                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor, genre};
                 model =(DefaultTableModel) tbl_bookDetails.getModel(); // create a model which creates a row 
                 model.addRow(obj);
             }
@@ -153,8 +156,46 @@ public class ViewBooks extends javax.swing.JFrame {
                 String publisher = rs.getString("publisher");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
+                String genre = rs.getString("genre");
 
-                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor};
+                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor, genre};
+                model =(DefaultTableModel) tbl_bookDetails.getModel(); // create a model which creates a row 
+                model.addRow(obj);
+            }
+            
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        
+    }
+    
+    // fetch record
+    public void searchGenre(){
+        
+        String genreInput = txt_genre.getText();
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+            String sql = "select * from book where genre like '%" + genreInput + "%' ";
+            PreparedStatement pst = con.prepareStatement(sql);
+//            pst.setString(1, genreInput);
+            
+            //select query 
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()) {
+                String bookId = rs.getString("bookid"); // gets book id fro'm DB
+                String bookName = rs.getString("title");
+                String author = rs.getString("author_name");
+                int quantity = rs.getInt("qty");
+                String publisher = rs.getString("publisher");
+                int availability = rs.getInt("availability");
+                int floor = rs.getInt("floor");
+                String genre = rs.getString("genre");
+
+                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor, genre};
                 model =(DefaultTableModel) tbl_bookDetails.getModel(); // create a model which creates a row 
                 model.addRow(obj);
             }
@@ -192,6 +233,9 @@ public class ViewBooks extends javax.swing.JFrame {
         txt_floor = new app.bolivia.swing.JCTextField();
         rSButtonHover4 = new rojerusan.RSButtonHover();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txt_genre = new app.bolivia.swing.JCTextField();
+        rSButtonHover5 = new rojerusan.RSButtonHover();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -285,7 +329,7 @@ public class ViewBooks extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Book ID", "Title", "Author", "Quantity", "Publisher", "Availability", "Floor"
+                "Book ID", "Title", "Author", "Quantity", "Publisher", "Availability", "Floor", "Genre"
             }
         ));
         tbl_bookDetails.setToolTipText("");
@@ -334,6 +378,36 @@ public class ViewBooks extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Shree Devanagari 714", 3, 12)); // NOI18N
         jLabel5.setText("Search by floor");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 160, 20));
+
+        jLabel6.setFont(new java.awt.Font("Shree Devanagari 714", 3, 12)); // NOI18N
+        jLabel6.setText("Search by genre");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 160, 20));
+
+        txt_genre.setBackground(new java.awt.Color(235, 235, 235));
+        txt_genre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txt_genre.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        txt_genre.setPlaceholder("Enter genre no...");
+        txt_genre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_genreFocusLost(evt);
+            }
+        });
+        txt_genre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_genreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_genre, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 200, 30));
+
+        rSButtonHover5.setBackground(new java.awt.Color(51, 51, 51));
+        rSButtonHover5.setText("Search");
+        rSButtonHover5.setFont(new java.awt.Font("Shree Devanagari 714", 1, 12)); // NOI18N
+        rSButtonHover5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonHover5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rSButtonHover5, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, 70, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
@@ -408,6 +482,25 @@ public class ViewBooks extends javax.swing.JFrame {
         dispose(); // close current page
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    private void txt_genreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_genreFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_genreFocusLost
+
+    private void rSButtonHover5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonHover5ActionPerformed
+        // TODO add your handling code here:
+        String genreInput = txt_genre.getText();
+        if (genreInput.equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter genre!");
+        } else {
+            clearTable();
+            searchGenre();
+        }
+    }//GEN-LAST:event_rSButtonHover5ActionPerformed
+
+    private void txt_genreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_genreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_genreActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -450,6 +543,7 @@ public class ViewBooks extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
@@ -457,9 +551,11 @@ public class ViewBooks extends javax.swing.JFrame {
     private rojerusan.RSButtonHover rSButtonHover2;
     private rojerusan.RSButtonHover rSButtonHover3;
     private rojerusan.RSButtonHover rSButtonHover4;
+    private rojerusan.RSButtonHover rSButtonHover5;
     private rojeru_san.complementos.RSTableMetro tbl_bookDetails;
     private app.bolivia.swing.JCTextField txt_author;
     private app.bolivia.swing.JCTextField txt_floor;
+    private app.bolivia.swing.JCTextField txt_genre;
     private app.bolivia.swing.JCTextField txt_publisher;
     // End of variables declaration//GEN-END:variables
 }
