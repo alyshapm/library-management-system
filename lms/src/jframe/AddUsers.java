@@ -73,21 +73,19 @@ public class AddUsers extends javax.swing.JFrame {
         long a = uBirthday.getTime();
         java.sql.Date birthday = new java.sql.Date(a);
        
-        major = combo_major.getSelectedItem().toString();
-        semester = Integer.parseInt(combo_sem.getSelectedItem().toString());
+//        major = combo_major.getSelectedItem().toString();
+//        semester = Integer.parseInt(combo_sem.getSelectedItem().toString());
     
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "insert into user values(?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "insert into user values(?, ?, ?, ?, ?, ?,)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, userId);
             pst.setString(2, fName);
             pst.setString(3, lName);
-            pst.setString(4, major);
-            pst.setDate(5, birthday);
-            pst.setString(6, email);
-            pst.setInt(7, semester);
-            pst.setString(8, address);
+            pst.setDate(4, birthday);
+            pst.setString(5, email);
+            pst.setString(6, address);
             
             int rowCount = pst.executeUpdate();
             if (rowCount > 0) {
@@ -116,21 +114,19 @@ public class AddUsers extends javax.swing.JFrame {
         long a = uBirthday.getTime();
         java.sql.Date birthday = new java.sql.Date(a);
        
-        major = combo_major.getSelectedItem().toString();
-        semester = Integer.parseInt(combo_sem.getSelectedItem().toString());
+//        major = combo_major.getSelectedItem().toString();
+//        semester = Integer.parseInt(combo_sem.getSelectedItem().toString());
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "update user set fname = ?, lname = ?,  major = ?, birthday = ?, email = ?, semester = ?, address = ? where userid = ?";
+            String sql = "update user set fname = ?, lname = ?, birthday = ?, email = ?, address = ? where userid = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, fName);
             pst.setString(2, lName);
-            pst.setString(3, major);
-            pst.setDate(4, birthday);
-            pst.setString(5, email);
-            pst.setInt(6, semester);
-            pst.setString(7, address);
-            pst.setInt(8, userId);
+            pst.setDate(3, birthday);
+            pst.setString(4, email);
+            pst.setString(5, address);
+            pst.setInt(6, userId);
             
             int rowCount = pst.executeUpdate();
             if (rowCount > 0) {
@@ -194,10 +190,6 @@ public class AddUsers extends javax.swing.JFrame {
         rSMaterialButtonRectangle1 = new rojerusan.RSMaterialButtonRectangle();
         rSMaterialButtonRectangle3 = new rojerusan.RSMaterialButtonRectangle();
         rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
-        combo_sem = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        combo_major = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
         txt_fname = new app.bolivia.swing.JCTextField();
         jLabel9 = new javax.swing.JLabel();
         txt_studentId = new app.bolivia.swing.JCTextField();
@@ -243,7 +235,7 @@ public class AddUsers extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Student ID", "First name", "Last name", "Major", "Birthday", "Email", "Semester", "Address"
+                "Student ID", "First name", "Last name", "Birthday", "Email", "Address"
             }
         ));
         tbl_studentDetails.setAltoHead(30);
@@ -295,22 +287,6 @@ public class AddUsers extends javax.swing.JFrame {
             }
         });
         jPanel1.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, 120, 50));
-
-        combo_sem.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        combo_sem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8" }));
-        jPanel1.add(combo_sem, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 300, 30));
-
-        jLabel7.setFont(new java.awt.Font("Shree Devanagari 714", 0, 14)); // NOI18N
-        jLabel7.setText("Select semester");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, -1, 20));
-
-        combo_major.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        combo_major.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Computer Science", "International Business", "Business, Management and Marketing", "Graphic Design", "Fashion", "Business Information System", "Communication", "Finance" }));
-        jPanel1.add(combo_major, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 300, 30));
-
-        jLabel6.setFont(new java.awt.Font("Shree Devanagari 714", 0, 14)); // NOI18N
-        jLabel6.setText("Select major");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 20));
 
         txt_fname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txt_fname.setPlaceholder("Enter name...");
@@ -402,11 +378,9 @@ public class AddUsers extends javax.swing.JFrame {
         txt_studentId.setText(model.getValueAt(rowNo, 0).toString());
         txt_fname.setText(model.getValueAt(rowNo, 1).toString());
         txt_lname.setText(model.getValueAt(rowNo, 2).toString());
-        combo_major.setSelectedItem(model.getValueAt(rowNo, 3).toString());
 //      date_birthday.setSelectedItem(model.getValueAt(rowNo, 4).toString());
-        txt_email.setText(model.getValueAt(rowNo, 5).toString());
-        combo_sem.setSelectedItem(model.getValueAt(rowNo, 6).toString());
-        txt_address.setText(model.getValueAt(rowNo, 7).toString());
+        txt_email.setText(model.getValueAt(rowNo, 3).toString());
+        txt_address.setText(model.getValueAt(rowNo, 4).toString());
 
     }//GEN-LAST:event_tbl_studentDetailsMouseClicked
 
@@ -505,8 +479,6 @@ public class AddUsers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> combo_major;
-    private javax.swing.JComboBox<String> combo_sem;
     private rojeru_san.componentes.RSDateChooser date_birthday;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -515,8 +487,6 @@ public class AddUsers extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
