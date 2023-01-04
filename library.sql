@@ -34,7 +34,7 @@ CREATE TABLE `user` (
   `birthday` date NOT NULL,
   `email` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL,
-  'regisDate' date NOT NULL
+  `regisDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `admin` (
   `username` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL,
-  'adminRole' varchar(20) NOT NULL
+  `adminRole` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -96,10 +96,10 @@ CREATE TABLE `publisher` (
   `publishId` int(10) NOT NULL,
   `name` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL,
-  'email' varchar(50) NOT NULL,
-  'city' varchar(20) NOT NULL,
-  'country' varchar (20) NOT NULL,
-  'zip' int (5) NOT NULL
+  `email` varchar(50) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `country` varchar (20) NOT NULL,
+  `zip` int (5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -108,8 +108,8 @@ CREATE TABLE `publisher` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userId`, `userFname`, `userLname`, `birthday`, `email`, `address`, 'regisDate') VALUES
-(20000101, 'John', 'Smith', '2000-01-01', 'johnsmith@mail.com', 'Jl. Jenderal Sudirman', '2022-10-05');
+INSERT INTO `user` (`userId`, `userFname`, `userLname`, `birthday`, `email`, `address`, `regisDate`) VALUES
+(20000101, `John`, `Smith`, `2000-01-01`, `johnsmith@mail.com`, `Jl. Jenderal Sudirman`, `2022-10-05`);
 
 --
 -- Indexes for dumped tables
