@@ -13,6 +13,22 @@ The objective of this database project is to design and implement a functional l
 
 > **You can check the screenshots of User Interface [here](https://github.com/vinitshahdeo/Library-Management-System/tree/master/screenshots).**
 
+### Contributors
+* Alysha Puti Maulidina
+* Kimberly Mazel
+* Chellshe Love Simorchelle
+
+
+## Modules
+
+- Admin login
+- Search Books
+- Add and Update Books
+- Add and Remove Members
+- Issue Books
+- Return Books
+- View issued & overdue books
+
 ### Core features
 **Admin Dashboard** deal with the following : 
 
@@ -25,21 +41,6 @@ The objective of this database project is to design and implement a functional l
 - Delete Member/Student Records
 - Update Member/Student Records.
 
-## Modules
-
-- Admin login
-- Search Books
-- Add and Update Books
-- Add and Remove Members
-- Issue Books
-- Return Books
-- View issued & overdue books
-
-### Contributors
-* Alysha Puti Maulidina
-* Kimberly Mazel
-* Chellshe Love Simorchelle
-
 ### Technologies
 * Database: SQL
 * Backend: phpMyAdmin
@@ -51,5 +52,5 @@ The objective of this database project is to design and implement a functional l
 ```bash
 pip 
 ```
-2. Connect SQL file to a localserver such as WAMP/XAMPP/MAMP.
+2. Import SQL file from **database** folder to a localserver such as WAMP/XAMPP/MAMP.
 3. Run jFrame files on Netbeans.
