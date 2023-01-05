@@ -23,3 +23,5 @@ The objective of this database project is to design and implement a functional l
 ```bash
 pip 
 ```
+2. Connect SQL file to a localserver such as XAMPP.
+3. Run jFrame files on Netbeans.
