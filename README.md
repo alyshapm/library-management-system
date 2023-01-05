@@ -1,6 +1,6 @@
 # Library Management System
 
-This project is a part of the Fundamentals of Data Science and Basic Statistics final project requirements. Full documentation and paper can be found [here](https://www.overleaf.com/read/xjbbsrmjgczq). 
+This repository is a part of the Database Technology final project requirements. Full documentation and paper can be found [here](https://www.overleaf.com/read/xjbbsrmjgczq). 
 
 #### -- Project Status: [Active]
 
