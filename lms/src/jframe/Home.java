@@ -54,7 +54,7 @@ public class Home extends javax.swing.JFrame {
             rs.last(); // return last row number ie total number of issued/borrowed books
             lbl_issueBooks.setText(Integer.toString(rs.getRow()));
             
-            rs = st.executeQuery("select * from book_borrowreturn where returndate < '"+today+"' and status = '"+"pending"+"'");
+            rs = st.executeQuery("select * from book_borrowreturn where returnDate < '"+today+"' and status = '"+"pending"+"'");
             rs.last(); // return last row number ie total number of overdue books
             lbl_overdueList.setText(Integer.toString(rs.getRow()));
         } catch (Exception e){

@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,7 +39,7 @@ public class ViewOverdue extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            PreparedStatement pst = con.prepareStatement("select * from book_borrowreturn where returndate < ? and status = ?");
+            PreparedStatement pst = con.prepareStatement("select * from book_borrowreturn where returnDate < ? and status = ?");
             
             pst.setDate(1, today);
             pst.setString(2, "pending");
@@ -49,7 +50,7 @@ public class ViewOverdue extends javax.swing.JFrame {
             while(rs.next()){
                 int id = rs.getInt("borrowId");
                 int bookId = rs.getInt("bookId");
-                int userId = rs.getInt("userId");
+                String userId = rs.getString("userId");
                 int adminId = rs.getInt("adminId");
                 String issueDate = rs.getString("borrowDate");
                 String dueDate = rs.getString("returnDate");

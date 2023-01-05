@@ -39,16 +39,17 @@ public class ViewBooks extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery("select * from book");
             
             while(rs.next()){
-                String bookId = rs.getString("bookId"); // gets book id from DB
+                int bookId = rs.getInt("bookId"); // gets book id from DB
                 String bookName = rs.getString("title");
                 String author = rs.getString("author_name");
                 int quantity = rs.getInt("quantity");
-                String publisher = rs.getString("publisher");
+                int publishId = rs.getInt("publishId");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
                 String genre = rs.getString("genre");
+                int serialNo = rs.getInt("serialNo");
                 
-                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor, genre};
+                Object[] obj = {bookId, bookName, author, publishId, serialNo, quantity, availability, floor, genre};
                 model =(DefaultTableModel) tbl_bookDetails.getModel(); // create a model which creates a row 
                 model.addRow(obj);
             }
@@ -64,29 +65,30 @@ public class ViewBooks extends javax.swing.JFrame {
     }
     
     public void searchPublisher(){
-        String publisherInput = txt_publisher.getText();
+        int publisherInput = Integer.parseInt(txt_publisher.getText());
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "select * from book where publisher = ?";
+            String sql = "select * from book where publishId = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, publisherInput);
+            pst.setInt(1, publisherInput);
             
             //select query 
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()) {
-                String bookId = rs.getString("bookId"); // gets book id from DB
+                int bookId = rs.getInt("bookId"); // gets book id from DB
                 String bookName = rs.getString("title");
                 String author = rs.getString("author_name");
                 int quantity = rs.getInt("quantity");
-                String publisher = rs.getString("publisher");
+                int publishId = rs.getInt("publishId");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
                 String genre = rs.getString("genre");
-
-                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor, genre};
+                int serialNo = rs.getInt("serialNo");
+                
+                Object[] obj = {bookId, bookName, author, publishId, serialNo, quantity, availability, floor, genre};
                 model =(DefaultTableModel) tbl_bookDetails.getModel(); // create a model which creates a row 
                 model.addRow(obj);
             }
@@ -104,7 +106,7 @@ public class ViewBooks extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "select * from book where author_name = ?";
+            String sql = "select * from book where author_name like '%" + authorInput + "%' ";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, authorInput);
             
@@ -112,16 +114,17 @@ public class ViewBooks extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()) {
-                String bookId = rs.getString("bookId"); // gets book id from DB
+                int bookId = rs.getInt("bookId"); // gets book id from DB
                 String bookName = rs.getString("title");
                 String author = rs.getString("author_name");
                 int quantity = rs.getInt("quantity");
-                String publisher = rs.getString("publisher");
+                int publishId = rs.getInt("publishId");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
                 String genre = rs.getString("genre");
-
-                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor, genre};
+                int serialNo = rs.getInt("serialNo");
+                
+                Object[] obj = {bookId, bookName, author, publishId, serialNo, quantity, availability, floor, genre};
                 model =(DefaultTableModel) tbl_bookDetails.getModel(); // create a model which creates a row 
                 model.addRow(obj);
             }
@@ -149,16 +152,17 @@ public class ViewBooks extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()) {
-                String bookId = rs.getString("bookId"); // gets book id from DB
+                int bookId = rs.getInt("bookId"); // gets book id from DB
                 String bookName = rs.getString("title");
                 String author = rs.getString("author_name");
                 int quantity = rs.getInt("quantity");
-                String publisher = rs.getString("publisher");
+                int publishId = rs.getInt("publishId");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
                 String genre = rs.getString("genre");
-
-                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor, genre};
+                int serialNo = rs.getInt("serialNo");
+                
+                Object[] obj = {bookId, bookName, author, publishId, serialNo, quantity, availability, floor, genre};
                 model =(DefaultTableModel) tbl_bookDetails.getModel(); // create a model which creates a row 
                 model.addRow(obj);
             }
@@ -186,16 +190,17 @@ public class ViewBooks extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()) {
-                String bookId = rs.getString("bookId"); // gets book id fro'm DB
+                int bookId = rs.getInt("bookId"); // gets book id from DB
                 String bookName = rs.getString("title");
                 String author = rs.getString("author_name");
                 int quantity = rs.getInt("quantity");
-                String publisher = rs.getString("publisher");
+                int publishId = rs.getInt("publishId");
                 int availability = rs.getInt("availability");
                 int floor = rs.getInt("floor");
                 String genre = rs.getString("genre");
-
-                Object[] obj = {bookId, bookName, author, quantity, publisher, availability, floor, genre};
+                int serialNo = rs.getInt("serialNo");
+                
+                Object[] obj = {bookId, bookName, author, publishId, serialNo, quantity, availability, floor, genre};
                 model =(DefaultTableModel) tbl_bookDetails.getModel(); // create a model which creates a row 
                 model.addRow(obj);
             }
@@ -329,7 +334,7 @@ public class ViewBooks extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Book ID", "Title", "Author", "Quantity", "Publisher", "Availability", "Floor", "Genre"
+                "Book ID", "Title", "Author", "Publisher", "ISBN", "Quantity", "Availability", "Floor", "Genre"
             }
         ));
         tbl_bookDetails.setToolTipText("");

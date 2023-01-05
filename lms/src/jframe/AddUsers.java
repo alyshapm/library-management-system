@@ -25,8 +25,8 @@ public class AddUsers extends javax.swing.JFrame {
      */
     DefaultTableModel model;
     
-    String fName, lName, major, email, address;
-    int userId, semester;
+    String fName, lName, major, email, address, userId;
+    int semester;
 
     public AddUsers() {
         initComponents();
@@ -42,7 +42,7 @@ public class AddUsers extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery("select * from user");
             
             while(rs.next()){
-                int studentId = rs.getInt("userId"); // gets book id from DB
+                String userId = rs.getString("userId"); // gets book id from DB
                 String fName = rs.getString("userFname");
                 String lName = rs.getString("userLname");
                 String birthday = rs.getString("birthday");
@@ -50,7 +50,7 @@ public class AddUsers extends javax.swing.JFrame {
                 String address = rs.getString("address");
                 String regisdate = rs.getString("regisDate");
                 
-                Object[] obj = {studentId, fName, lName, birthday, email, address, regisdate};
+                Object[] obj = {userId, fName, lName, birthday, email, address, regisdate};
                 model =(DefaultTableModel) tbl_studentDetails.getModel(); // create a model which creates a row 
                 model.addRow(obj);
             }
@@ -62,7 +62,7 @@ public class AddUsers extends javax.swing.JFrame {
     // add student to table
     public boolean addUser(){
         boolean isAdded = false;
-        userId = Integer.parseInt(txt_studentId.getText());
+        userId = txt_studentId.getText();
         fName = txt_fname.getText();
         lName = txt_lname.getText();
         email = txt_email.getText();
@@ -71,25 +71,25 @@ public class AddUsers extends javax.swing.JFrame {
         Date uBirthday = date_birthday.getDatoFecha();
         long a = uBirthday.getTime();
         java.sql.Date birthday = new java.sql.Date(a);
-
-        Date uRegisdate = date_regisdate.getDatoFecha();
-        long b = uRegisdate.getTime();
-        java.sql.Date regisdate = new java.sql.Date(b);
+        
+        // get today's date for registration date
+        long l = System.currentTimeMillis();
+        java.sql.Date today = new java.sql.Date(l);
        
 //        major = combo_major.getSelectedItem().toString();
 //        semester = Integer.parseInt(combo_sem.getSelectedItem().toString());
     
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "insert into user values(?, ?, ?, ?, ?, ?, ?,)";
+            String sql = "insert into user values(?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setInt(1, userId);
+            pst.setString(1, userId);
             pst.setString(2, fName);
             pst.setString(3, lName);
             pst.setDate(4, birthday);
             pst.setString(5, email);
             pst.setString(6, address);
-            pst.setString(7, regisdate);
+            pst.setDate(7, today);
             
             int rowCount = pst.executeUpdate();
             if (rowCount > 0) {
@@ -108,7 +108,7 @@ public class AddUsers extends javax.swing.JFrame {
     // update student details
     public boolean updateUser(){
         boolean isUpdated = false;
-        userId = Integer.parseInt(txt_studentId.getText());
+        userId = txt_studentId.getText();
         fName = txt_fname.getText();
         lName = txt_lname.getText();
         email = txt_email.getText();
@@ -118,24 +118,19 @@ public class AddUsers extends javax.swing.JFrame {
         long a = uBirthday.getTime();
         java.sql.Date birthday = new java.sql.Date(a);
 
-        Date uRegisdate = date_regisdate.getDatoFecha();
-        long b = uRegisdate.getTime();
-        java.sql.Date regisdate = new java.sql.Date(b);
-       
 //        major = combo_major.getSelectedItem().toString();
 //        semester = Integer.parseInt(combo_sem.getSelectedItem().toString());
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "update user set fname = ?, lname = ?, birthday = ?, email = ?, address = ?, regisdate = ? where userid = ?";
+            String sql = "update user set userFname = ?, userLname = ?, birthday = ?, email = ?, address = ? where userId = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, fName);
             pst.setString(2, lName);
             pst.setDate(3, birthday);
             pst.setString(4, email);
             pst.setString(5, address);
-            pst.setDate(6, regisdate);
-            pst.setInt(7, userId);
+            pst.setString(6, userId);
             
             
             int rowCount = pst.executeUpdate();
@@ -155,13 +150,13 @@ public class AddUsers extends javax.swing.JFrame {
     // delete student
     public boolean deleteUser(){
         boolean isDeleted = false;
-        userId = Integer.parseInt(txt_studentId.getText());
+        userId = txt_studentId.getText();
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "delete from user where userid = ?";
+            String sql = "delete from user where userId = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setInt(1, userId);
+            pst.setString(1, userId);
             
             int rowCount = pst.executeUpdate();
             if (rowCount > 0) {
@@ -245,7 +240,7 @@ public class AddUsers extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Student ID", "First name", "Last name", "Birthday", "Email", "Address"
+                "User ID", "First name", "Last name", "Birthday", "Email", "Address"
             }
         ));
         tbl_studentDetails.setAltoHead(30);

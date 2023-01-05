@@ -41,7 +41,7 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
             while(rs.next()){
                 int id = rs.getInt("borrowId");
                 int bookId = rs.getInt("bookId");
-                int userId = rs.getInt("userId");
+                String userId = rs.getString("userId");
                 int adminId = rs.getInt("adminId");
                 String issueDate = rs.getString("borrowDate");
                 String dueDate = rs.getString("returnDate");
@@ -76,7 +76,7 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "select * from book_borrowreturn where borrowdate BETWEEN ? and ?";
+            String sql = "select * from book_borrowreturn where borrowDate BETWEEN ? and ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setDate(1, fromDate);
             pst.setDate(2, toDate);
@@ -90,7 +90,7 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
                 while(rs.next()){
                     int id = rs.getInt("borrowId");
                     int bookId = rs.getInt("bookId");
-                    int userId = rs.getInt("userId");
+                    String userId = rs.getString("userId");
                     int adminId = rs.getInt("adminId");
                     String issueDate = rs.getString("borrowDate");
                     String dueDate = rs.getString("returnDate");
@@ -113,7 +113,7 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "select * from book_borrowreturn where userid = ?";
+            String sql = "select * from book_borrowreturn where userId = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, userInput);
             
@@ -123,7 +123,7 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
             while(rs.next()) {
                 int id = rs.getInt("borrowId");
                 int bookId = rs.getInt("bookId");
-                int userId = rs.getInt("userId");
+                String userId = rs.getString("userId");
                 int adminId = rs.getInt("adminId");
                 String issueDate = rs.getString("borrowDate");
                 String dueDate = rs.getString("returnDate");
@@ -147,7 +147,7 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "select * from book_borrowreturn where adminid = ?";
+            String sql = "select * from book_borrowreturn where adminId = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, adminInput);
             
@@ -175,7 +175,7 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
             while(rs.next()) {
                 int id = rs.getInt("borrowId");
                 int bookId = rs.getInt("bookId");
-                int userId = rs.getInt("userId");
+                String userId = rs.getString("userId");
                 int adminId = rs.getInt("adminId");
                 String issueDate = rs.getString("borrowDate");
                 String dueDate = rs.getString("returnDate");

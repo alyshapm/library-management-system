@@ -30,7 +30,7 @@ public class RequestIssue extends javax.swing.JFrame {
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            PreparedStatement pst = con.prepareStatement("select * from book where bookid = ?");
+            PreparedStatement pst = con.prepareStatement("select * from book where bookId = ?");
             pst.setInt(1, bookId);
             ResultSet rs = pst.executeQuery();
             
@@ -51,20 +51,18 @@ public class RequestIssue extends javax.swing.JFrame {
     
     // fetch student details from database and displays it on the panel
     public void getStudentDetails(){
-        int studentId = Integer.parseInt(txt_studentId.getText());
+        String userId = txt_studentId.getText();
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            PreparedStatement pst = con.prepareStatement("select * from user where userid = ?");
-            pst.setInt(1, studentId);
+            PreparedStatement pst = con.prepareStatement("select * from user where userId = ?");
+            pst.setString(1, userId);
             ResultSet rs = pst.executeQuery();
             
             // iterate through all the information and display
             if(rs.next()){
                 lbl_studentId.setText(rs.getString("userId"));
                 lbl_studentName.setText(rs.getString("userFname"));
-                lbl_course.setText(rs.getString("major"));
-                lbl_branch.setText(rs.getString("semester"));
             } else {
                 lbl_studentError.setText("Invalid user ID!");
             }
@@ -78,7 +76,7 @@ public class RequestIssue extends javax.swing.JFrame {
     public boolean issueBook(){
         boolean isIssued = false;
         int bookId = Integer.parseInt(txt_bookId.getText());
-        int studentId = Integer.parseInt(txt_studentId.getText());
+        String userId = txt_studentId.getText();
         String adminId = txt_admin.getText();
         
         Date uIssueDate = date_issueDate.getDatoFecha();
@@ -92,10 +90,10 @@ public class RequestIssue extends javax.swing.JFrame {
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "insert into book_borrowreturn(bookid, userid, adminid, borrowdate, returndate, status, fine) values (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "insert into book_borrowreturn(bookId, userId, adminId, borrowDate, returnDate, status, fine) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, bookId);
-            pst.setInt(2, studentId);
+            pst.setString(2, userId);
             pst.setString(3, adminId);
             pst.setDate(4, sIssueDate);
             pst.setDate(5, sDueDate);
@@ -120,7 +118,7 @@ public class RequestIssue extends javax.swing.JFrame {
         int bookId = Integer.parseInt(txt_bookId.getText());
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "update book set qty = qty - 1 where bookid = ?";
+            String sql = "update book set quantity = quantity - 1 where bookId = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, bookId);
             
@@ -141,14 +139,14 @@ public class RequestIssue extends javax.swing.JFrame {
     public boolean alreadyIssued(){
         boolean alreadyIssued = false;
         int bookId = Integer.parseInt(txt_bookId.getText());
-        int studentId = Integer.parseInt(txt_studentId.getText());
+        String userId = txt_studentId.getText();
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "select * from book_borrowreturn where bookid = ? and userid = ? and status = ?";
+            String sql = "select * from book_borrowreturn where bookId = ? and userId = ? and status = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, bookId);
-            pst.setInt(2, studentId);
+            pst.setString(2, userId);
             pst.setString(3, "pending");
             
             ResultSet rs = pst.executeQuery();
@@ -200,10 +198,6 @@ public class RequestIssue extends javax.swing.JFrame {
         jlabel = new javax.swing.JLabel();
         jlabel1 = new javax.swing.JLabel();
         lbl_studentName = new javax.swing.JLabel();
-        coursejlabel = new javax.swing.JLabel();
-        lbl_course = new javax.swing.JLabel();
-        branchjlabel = new javax.swing.JLabel();
-        lbl_branch = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lbl_studentError = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -273,7 +267,7 @@ public class RequestIssue extends javax.swing.JFrame {
 
         txt_studentId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         txt_studentId.setFont(new java.awt.Font("Shree Devanagari 714", 0, 13)); // NOI18N
-        txt_studentId.setPlaceholder("Enter student ID...");
+        txt_studentId.setPlaceholder("Enter user ID...");
         txt_studentId.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_studentIdFocusLost(evt);
@@ -283,7 +277,7 @@ public class RequestIssue extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Shree Devanagari 714", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel12.setText("Student ID");
+        jLabel12.setText("User");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
 
         txt_bookId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -355,20 +349,6 @@ public class RequestIssue extends javax.swing.JFrame {
 
         lbl_studentName.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jPanel1.add(lbl_studentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 410, 110, 30));
-
-        coursejlabel.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        coursejlabel.setText("Course:");
-        jPanel1.add(coursejlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 460, -1, -1));
-
-        lbl_course.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jPanel1.add(lbl_course, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, 170, 40));
-
-        branchjlabel.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        branchjlabel.setText("Branch:");
-        jPanel1.add(branchjlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 500, -1, 20));
-
-        lbl_branch.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jPanel1.add(lbl_branch, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 490, 110, 30));
 
         jLabel5.setFont(new java.awt.Font("Shree Devanagari 714", 1, 14)); // NOI18N
         jLabel5.setText("STUDENT DETAILS");
@@ -484,8 +464,6 @@ public class RequestIssue extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel branchjlabel;
-    private javax.swing.JLabel coursejlabel;
     private rojeru_san.componentes.RSDateChooser date_dueDate;
     private rojeru_san.componentes.RSDateChooser date_issueDate;
     private javax.swing.JLabel jLabel1;
@@ -510,8 +488,6 @@ public class RequestIssue extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_bookError;
     private javax.swing.JLabel lbl_bookId;
     private javax.swing.JLabel lbl_bookName;
-    private javax.swing.JLabel lbl_branch;
-    private javax.swing.JLabel lbl_course;
     private javax.swing.JLabel lbl_quantity;
     private javax.swing.JLabel lbl_studentError;
     private javax.swing.JLabel lbl_studentId;

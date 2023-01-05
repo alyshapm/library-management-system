@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -29,6 +30,7 @@ public class HomePart extends javax.swing.JFrame {
         initComponents();
         displayCardDetails();
     }
+    
     
     // display info cards
     public void displayCardDetails(){
@@ -54,7 +56,7 @@ public class HomePart extends javax.swing.JFrame {
             rs.last(); // return last row number ie total number of issued/borrowed books
             lbl_issueBooks.setText(Integer.toString(rs.getRow()));
             
-            rs = st.executeQuery("select * from book_borrowreturn where returndate < '"+today+"' and status = '"+"pending"+"'");
+            rs = st.executeQuery("select * from book_borrowreturn where returnDate < '"+today+"' and status = '"+"pending"+"'");
             rs.last(); // return last row number ie total number of overdue books
             lbl_overdueList.setText(Integer.toString(rs.getRow()));
         } catch (Exception e){
@@ -75,6 +77,7 @@ public class HomePart extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -123,9 +126,10 @@ public class HomePart extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Shree Devanagari 714", 1, 18)); // NOI18N
         jLabel1.setText("LMS");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -20, 230, 100));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 80, -1));
 
-        jLabel2.setText("Welcome, admin");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, -1, -1));
+        jLabel3.setText("Welcome, admin");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 20, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 50));
 
@@ -604,6 +608,7 @@ public class HomePart extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;

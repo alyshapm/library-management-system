@@ -24,8 +24,8 @@ public class AddBooks extends javax.swing.JFrame {
      * Creates new form AddBooks
      */
     
-    String title, author, publisher, genre, regisId, serialNo, regisDate;
-    int bookId, quantity, shelf, floor, avail;
+    String title, author, genre, regisId, serialNo, regisDate;
+    int quantity, shelf, floor, avail, bookId, publishId;
     DefaultTableModel model;
     
     public AddBooks() {
@@ -43,11 +43,11 @@ public class AddBooks extends javax.swing.JFrame {
             
             while(rs.next()){
                 // Gets values from the database
-                String bookId = rs.getString("bookId"); 
+                int bookId = rs.getInt("bookId"); 
                 String title = rs.getString("title");
                 String author = rs.getString("author_name");
                 String serialNo = rs.getString("serialNo");
-                String publisher = rs.getString("publisher");
+                int publisher = rs.getInt("publishId");
                 int quantity = rs.getInt("quantity");
                 String regisDate = rs.getString("regisDate");
                 String regisId = rs.getString("regisBy");
@@ -73,7 +73,7 @@ public class AddBooks extends javax.swing.JFrame {
         author = txt_authorName.getText();
         quantity = Integer.parseInt(txt_quantity.getText());
         serialNo = txt_serial.getText();
-        publisher = txt_publisher.getText();
+        publishId = Integer.parseInt(txt_publisher.getText());
         regisId = txt_regisby.getText();
         shelf = Integer.parseInt(txt_shelf.getText());
         floor = Integer.parseInt(txt_floor.getText());
@@ -93,7 +93,7 @@ public class AddBooks extends javax.swing.JFrame {
             pst.setString(2, title);
             pst.setString(3, author);
             pst.setString(4, serialNo);
-            pst.setString(5, publisher);
+            pst.setInt(5, publishId);
             pst.setInt(6, quantity);
             pst.setDate(7, today);
             pst.setString(8, regisId);
@@ -124,7 +124,7 @@ public class AddBooks extends javax.swing.JFrame {
         author = txt_authorName.getText();
         quantity = Integer.parseInt(txt_quantity.getText());
         serialNo = txt_serial.getText();
-        publisher = txt_publisher.getText();
+        publishId = Integer.parseInt(txt_publisher.getText());
         regisId = txt_regisby.getText();
         shelf = Integer.parseInt(txt_shelf.getText());
         floor = Integer.parseInt(txt_floor.getText());
@@ -133,12 +133,12 @@ public class AddBooks extends javax.swing.JFrame {
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "update book set title = ?, author_name = ?, serialno = ?, publisher = ?, qty = ?, regisby = ?, availability = ?, shelfno = ?, floor = ?, genre = ? where bookid = ?";
+            String sql = "update book set title = ?, author_name = ?, serialNo = ?, publishId = ?, quantity = ?, regisBy = ?, availability = ?, shelfNo = ?, floor = ?, genre = ? where bookId = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, title);
             pst.setString(2, author);
             pst.setString(3, serialNo);
-            pst.setString(4, publisher);
+            pst.setInt(4, publishId);
             pst.setInt(5, quantity);
             pst.setString(6, regisId);
             pst.setInt(7, avail);
@@ -168,7 +168,7 @@ public class AddBooks extends javax.swing.JFrame {
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "delete from book where bookid = ?";
+            String sql = "delete from book where bookId = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, bookId);
             

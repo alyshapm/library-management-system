@@ -56,7 +56,7 @@ public class Login extends javax.swing.JFrame {
             
             ResultSet rs = pst.executeQuery();
             if (rs.next()){ // if data exists in DB, open homepage
-                String typeLogin = rs.getString("type");
+                String typeLogin = rs.getString("adminRole");
                 if (typeLogin.equals("full") ){
                     Home home = new Home();
                     home.setVisible(true);
@@ -81,7 +81,7 @@ public class Login extends javax.swing.JFrame {
         String fname = txt_fname.getText();
         String lname = txt_lname.getText();
         String email = txt_email.getText();
-        int phone = Integer.parseInt(txt_phone.getText());
+        String phone = txt_phone.getText();
         String address = txt_address.getText();
         
 //        String department = combo_department.getSelectedItem().toString();
@@ -94,7 +94,7 @@ public class Login extends javax.swing.JFrame {
             pst.setString(1, fname);
             pst.setString(2, lname);
             pst.setString(3, email);
-            pst.setInt(4, phone);
+            pst.setString(4, phone);
             pst.setString(5, uname);
             pst.setString(6, pwd);
             pst.setString(7, address);
@@ -102,6 +102,7 @@ public class Login extends javax.swing.JFrame {
             int updatedRowCount = pst.executeUpdate();
             
             if (updatedRowCount > 0){
+                getAdminId();
                 JOptionPane.showMessageDialog(this, "Recorded Inserted Successfully");
                 Login page = new Login();
                 page.setVisible(true);
@@ -173,6 +174,26 @@ public class Login extends javax.swing.JFrame {
         }
         
         return isExist;
+    }
+    
+    // fetch admin id from database and displays it on the pop up
+    public void getAdminId(){
+        String username = txt_uname.getText();
+        
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+            PreparedStatement pst = con.prepareStatement("select * from admin where adminId = ?");
+            pst.setString(1, username);
+            ResultSet rs = pst.executeQuery();
+            
+            // iterate through all the information and display
+            if(rs.next()){
+                JOptionPane.showMessageDialog(this, "Admin id: " + rs.getInt("adminid"));
+            } 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
     /**

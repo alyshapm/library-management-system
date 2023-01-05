@@ -27,19 +27,19 @@ public class RequestReturn extends javax.swing.JFrame {
     public void getIssueBookDetails(){
         
         int bookId = Integer.parseInt(txt_bookId.getText());
-        int studentId = Integer.parseInt(txt_studentId.getText());
+        String userId = txt_studentId.getText();
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "select * from book_borrowreturn where bookid = ? and userid = ? and status = ?";
+            String sql = "select * from book_borrowreturn where bookId = ? and userId = ? and status = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, bookId);
-            pst.setInt(2, studentId);
+            pst.setString(2, userId);
             pst.setString(3, "pending");
             
             ResultSet rs = pst.executeQuery();
             if (rs.next()){
-                lbl_issueId.setText(rs.getString("borrowId"));
+                lbl_issueId.setText(rs.getString("borrowId")); // getint?
                 lbl_bookName.setText(rs.getString("bookId"));
                 lbl_studentName.setText(rs.getString("userId"));
                 lbl_issueDate.setText(rs.getString("borrowDate"));
@@ -67,14 +67,14 @@ public class RequestReturn extends javax.swing.JFrame {
     public boolean returnBook(){
         boolean isReturned = false;
         int bookId = Integer.parseInt(txt_bookId.getText());
-        int studentId = Integer.parseInt(txt_studentId.getText());
+        String userId = txt_studentId.getText();
         
         try{
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "update book_borrowreturn set status = ? where userid = ? and bookid = ? and status = ?";
+            String sql = "update book_borrowreturn set status = ? where userId = ? and bookId = ? and status = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, "returned");
-            pst.setInt(2, studentId);
+            pst.setString(2, userId);
             pst.setInt(3, bookId);
             pst.setString(4, "pending");
             
@@ -98,7 +98,7 @@ public class RequestReturn extends javax.swing.JFrame {
         int bookId = Integer.parseInt(txt_bookId.getText());
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "update book set qty = qty + 1 where bookid = ?";
+            String sql = "update book set quantity = quantity + 1 where bookId = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, bookId);
             
@@ -199,7 +199,7 @@ public class RequestReturn extends javax.swing.JFrame {
         jPanel3.add(lbl_bookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 110, 30));
 
         jLabel6.setFont(new java.awt.Font("Shree Devanagari 714", 1, 14)); // NOI18N
-        jLabel6.setText("Student name:");
+        jLabel6.setText("User name:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Shree Devanagari 714", 1, 14)); // NOI18N
@@ -240,11 +240,11 @@ public class RequestReturn extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Shree Devanagari 714", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel12.setText("Student ID");
+        jLabel12.setText("User ID");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
         txt_studentId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        txt_studentId.setPlaceholder("Enter student ID...");
+        txt_studentId.setPlaceholder("Enter user ID...");
         txt_studentId.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_studentIdFocusLost(evt);
