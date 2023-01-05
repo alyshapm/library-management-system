@@ -1,6 +1,6 @@
 # Library Management System
 
-This repository is a part of the Database Technology final project requirements. Full documentation and paper can be found [here](https://www.overleaf.com/read/xjbbsrmjgczq). 
+This repository is a part of the Database Technology final project requirements.
 
 #### -- Project Status: [Active]
 
