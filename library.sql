@@ -66,7 +66,7 @@ CREATE TABLE `book` (
   `title` varchar(100) NOT NULL,
   `author_name` varchar(50) NOT NULL,
   `publishId` int(10) NOT NULL,
-  `serialNo` varchar(14) NOT NULL,
+  `serialNo` varchar(13) NOT NULL,
   `quantity` int(11) NOT NULL,
   `regisDate` date NOT NULL,
   `adminId` int(11) NOT NULL,
@@ -107,7 +107,7 @@ INSERT INTO `book` (`bookId`, `title`, `author_name`, `publishId`, `serialNo`, `
 (24, 'The Count of Monte Cristo', 'Alexandre Dumas', 39, '9780553213508', 19, '2017-10-23', 9, 16, 978, 1, 'Novel, Serialised Work, Romance novel, Historical Fiction, Adventure fiction'),
 (25, 'All Quiet on the Western Front', 'Erich Maria Remarque', 26, '9780099532811', 27, '2005-08-22', 3, 21, 978, 3, 'Novel, Fiction, War story, Roman à clef'),
 (26, 'Moby-Dick or, the Whale', 'Herman Melville', 7, '9780140390841', 4, '2003-12-03', 8, 2, 979, 4, 'Epic, Adventure fiction, Nautical fiction'),
-(27, 'Pandora\'s Jar: Women in the Greek Myths', 'Natalie Haynes', 18, '9781509873142', 9, '2018-10-05', 4, 3, 979, 3, 'Fiction, Fairy tale'),
+(27, 'Pandoras Jar: Women in the Greek Myths', 'Natalie Haynes', 18, '9781509873142', 9, '2018-10-05', 4, 3, 979, 3, 'Fiction, Fairy tale'),
 (28, 'Brave New World', 'Aldous Huxley', 34, '9780062696120', 2, '2011-11-20', 7, 1, 979, 1, 'Novel, Science fiction, Dystopian Fiction'),
 (29, 'The Grapes of Wrath', 'John Steinbeck', 13, '9780606001748', 11, '2005-09-24', 5, 5, 978, 2, 'Novel, Historical Fiction'),
 (30, 'Blink: The Power of Thinking Without Thinking', 'Malcolm Gladwell', 3, '9780316010665', 26, '2022-08-06', 6, 16, 979, 2, 'Self-help book'),
@@ -206,7 +206,7 @@ INSERT INTO `publisher` (`publishId`, `name`, `address`, `email`, `city`, `count
 (6, 'Longman Pub Group', '1185 Avenue Of The Americas', 'longmanpub@group.com', 'New York City', 'United States', '10036'),
 (8, 'CreateSpace Independent Publishing Platform', '618 Maiden Lane Fontana', 'createspace@publishing.com', 'California', 'United States', '92335'),
 (9, 'Random House Publishing', '1745 Broadway New York', 'bbdpublicity@randomhouse.com.', 'New York City', 'United States', '10019'),
-(10, 'Charles Scribner\'s Sons', '153–157 Fifth Avenue', 'ScribnerPublicity@SimonandSchuster.com', 'New York City', 'United States', '10010'),
+(10, 'Charles Scribners Sons', '153–157 Fifth Avenue', 'ScribnerPublicity@SimonandSchuster.com', 'New York City', 'United States', '10010'),
 (11, 'J. B. Lippincott & Co.', '227 S. 6th Street across from Washington Square', 'permissions@lww.com', 'Philadelphia', 'United States', '19106'),
 (16, 'Penguin Random House', '1745 Broadway New York', 'consumerservices@penguinrandomhouse.com', 'New York City', 'United States', '10019'),
 (17, 'Harper Perennial', '195 Broadway', 'privacypolicy@harpercollins.com', 'New York City', 'United States', '10007'),
@@ -221,7 +221,7 @@ INSERT INTO `publisher` (`publishId`, `name`, `address`, `email`, `city`, `count
 (39, 'Jonathan Cape', '20 VAUXHALL BRIDGE ROAD', 'capesubmissions@randomhouse.co.uk', 'London', 'United Kingdom', 'SW1V 2SA'),
 (40, 'Hamish Hamilton', '20 VAUXHALL BRIDGE ROAD', 'hamishhamilton@randomhouse.co.uk', 'London', 'United Kingdom', 'SW1V 2SA'),
 (41, 'Headline', 'Carmelite House 50 Victoria Embankment', 'enquiries@hachette.co.uk', 'London', 'United Kingdom', 'EC4Y 0DZ'),
-(44, 'St. Martin\'s Press', '120 Broadway', 'specialsales@raincoast.com', 'New York City', 'United States', '10271');
+(44, 'St. Martins Press', '120 Broadway', 'specialsales@raincoast.com', 'New York City', 'United States', '10271');
 
 -- --------------------------------------------------------
 
@@ -231,8 +231,8 @@ INSERT INTO `publisher` (`publishId`, `name`, `address`, `email`, `city`, `count
 
 CREATE TABLE `user` (
   `userId` varchar(10) NOT NULL,
-  `userFname` varchar(50) NOT NULL,
-  `userLname` varchar(50) NOT NULL,
+  `userFname` varchar(20) NOT NULL,
+  `userLname` varchar(20) NOT NULL,
   `birthday` date NOT NULL,
   `email` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL,
