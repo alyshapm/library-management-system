@@ -487,7 +487,7 @@
                     <Column editable="true" title="Publisher" type="java.lang.Object"/>
                     <Column editable="true" title="Quantity" type="java.lang.Object"/>
                     <Column editable="true" title="Regis date" type="java.lang.Object"/>
-                    <Column editable="true" title="Regis by" type="java.lang.Object"/>
+                    <Column editable="true" title="Admin ID" type="java.lang.Object"/>
                     <Column editable="true" title="Availability" type="java.lang.Object"/>
                     <Column editable="true" title="Shelf" type="java.lang.Object"/>
                     <Column editable="true" title="Floor" type="java.lang.Object"/>

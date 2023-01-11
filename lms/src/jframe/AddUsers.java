@@ -240,7 +240,7 @@ public class AddUsers extends javax.swing.JFrame {
 
             },
             new String [] {
-                "User ID", "First name", "Last name", "Birthday", "Email", "Address"
+                "User ID", "First name", "Last name", "Birthday", "Email", "Address", "Regis date"
             }
         ));
         tbl_studentDetails.setAltoHead(30);
@@ -383,9 +383,9 @@ public class AddUsers extends javax.swing.JFrame {
         txt_studentId.setText(model.getValueAt(rowNo, 0).toString());
         txt_fname.setText(model.getValueAt(rowNo, 1).toString());
         txt_lname.setText(model.getValueAt(rowNo, 2).toString());
-//      date_birthday.setSelectedItem(model.getValueAt(rowNo, 4).toString());
-        txt_email.setText(model.getValueAt(rowNo, 3).toString());
-        txt_address.setText(model.getValueAt(rowNo, 4).toString());
+//        date_birthday.setDatoFecha(model.getValueAt(rowNo, 4).toString());
+        txt_email.setText(model.getValueAt(rowNo, 4).toString());
+        txt_address.setText(model.getValueAt(rowNo, 5).toString());
 
     }//GEN-LAST:event_tbl_studentDetailsMouseClicked
 

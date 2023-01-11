@@ -50,7 +50,7 @@ public class AddBooks extends javax.swing.JFrame {
                 int publisher = rs.getInt("publishId");
                 int quantity = rs.getInt("quantity");
                 String regisDate = rs.getString("regisDate");
-                String regisId = rs.getString("regisBy");
+                String regisId = rs.getString("adminId");
                 int avail = rs.getInt("availability");
                 int shelf = rs.getInt("shelfNo");
                 int floor = rs.getInt("floor");
@@ -92,8 +92,8 @@ public class AddBooks extends javax.swing.JFrame {
             pst.setInt(1, bookId);
             pst.setString(2, title);
             pst.setString(3, author);
-            pst.setString(4, serialNo);
-            pst.setInt(5, publishId);
+            pst.setInt(4, publishId);
+            pst.setString(5, serialNo);
             pst.setInt(6, quantity);
             pst.setDate(7, today);
             pst.setString(8, regisId);
@@ -133,7 +133,7 @@ public class AddBooks extends javax.swing.JFrame {
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-            String sql = "update book set title = ?, author_name = ?, serialNo = ?, publishId = ?, quantity = ?, regisBy = ?, availability = ?, shelfNo = ?, floor = ?, genre = ? where bookId = ?";
+            String sql = "update book set title = ?, author_name = ?, serialNo = ?, publishId = ?, quantity = ?, adminId = ?, availability = ?, shelfNo = ?, floor = ?, genre = ? where bookId = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, title);
             pst.setString(2, author);
@@ -422,7 +422,7 @@ public class AddBooks extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Book ID", "Title", "Author", "Serial no", "Publisher", "Quantity", "Regis date", "Regis by", "Availability", "Shelf", "Floor", "Genre"
+                "Book ID", "Title", "Author", "Serial no", "Publisher", "Quantity", "Regis date", "Admin ID", "Availability", "Shelf", "Floor", "Genre"
             }
         ));
         tbl_bookDetails.setToolTipText("");
