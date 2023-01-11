@@ -193,10 +193,10 @@ public class RequestReturn extends javax.swing.JFrame {
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         lbl_dueDate.setFont(new java.awt.Font("Shree Devanagari 714", 1, 14)); // NOI18N
-        jPanel3.add(lbl_dueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 110, 30));
+        jPanel3.add(lbl_dueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 200, 30));
 
         lbl_bookName.setFont(new java.awt.Font("Shree Devanagari 714", 1, 14)); // NOI18N
-        jPanel3.add(lbl_bookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 110, 30));
+        jPanel3.add(lbl_bookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 200, 30));
 
         jLabel6.setFont(new java.awt.Font("Shree Devanagari 714", 1, 14)); // NOI18N
         jLabel6.setText("User name:");
@@ -207,20 +207,20 @@ public class RequestReturn extends javax.swing.JFrame {
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         lbl_issueId.setFont(new java.awt.Font("Shree Devanagari 714", 1, 14)); // NOI18N
-        jPanel3.add(lbl_issueId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 120, 20));
+        jPanel3.add(lbl_issueId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 200, 30));
 
         lbl_studentName.setFont(new java.awt.Font("Shree Devanagari 714", 1, 14)); // NOI18N
-        jPanel3.add(lbl_studentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 160, 30));
+        jPanel3.add(lbl_studentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 200, 30));
 
         lbl_issueDate.setFont(new java.awt.Font("Shree Devanagari 714", 1, 14)); // NOI18N
-        jPanel3.add(lbl_issueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 110, 30));
+        jPanel3.add(lbl_issueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 200, 30));
 
         jLabel16.setFont(new java.awt.Font("Shree Devanagari 714", 1, 14)); // NOI18N
         jLabel16.setText("Fine:");
         jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, 20));
 
         lbl_fine.setFont(new java.awt.Font("Shree Devanagari 714", 1, 14)); // NOI18N
-        jPanel3.add(lbl_fine, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 110, 30));
+        jPanel3.add(lbl_fine, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 200, 30));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 350, 500));
 

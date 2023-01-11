@@ -25,8 +25,7 @@ public class AddUsers extends javax.swing.JFrame {
      */
     DefaultTableModel model;
     
-    String fName, lName, major, email, address, userId;
-    int semester;
+    String fName, lName, email, address, userId;
 
     public AddUsers() {
         initComponents();
@@ -43,8 +42,8 @@ public class AddUsers extends javax.swing.JFrame {
             
             while(rs.next()){
                 String userId = rs.getString("userId"); // gets book id from DB
-                String fName = rs.getString("userFname");
-                String lName = rs.getString("userLname");
+                String fName = rs.getString("userFname").substring(0, 1).toUpperCase() + rs.getString("userFname").substring(1); // Makes first letter capital
+                String lName = rs.getString("userLname").substring(0, 1).toUpperCase() + rs.getString("userLname").substring(1); // Makes first letter capital
                 String birthday = rs.getString("birthday");
                 String email = rs.getString("email");
                 String address = rs.getString("address");

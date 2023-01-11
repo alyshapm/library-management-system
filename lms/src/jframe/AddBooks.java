@@ -257,7 +257,7 @@ public class AddBooks extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Shree Devanagari 714", 0, 12)); // NOI18N
         jLabel4.setText("Book ID");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
 
         txt_bookId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txt_bookId.setPlaceholder("Enter book ID...");
@@ -339,7 +339,7 @@ public class AddBooks extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Shree Devanagari 714", 0, 12)); // NOI18N
         jLabel8.setText("Serial no.");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
         txt_serial.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txt_serial.setPlaceholder("Enter serial no...");
@@ -352,7 +352,7 @@ public class AddBooks extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Shree Devanagari 714", 0, 12)); // NOI18N
         jLabel9.setText("Publisher");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
 
         txt_publisher.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txt_publisher.setPlaceholder("Enter publisher...");
@@ -365,7 +365,7 @@ public class AddBooks extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Shree Devanagari 714", 0, 12)); // NOI18N
         jLabel10.setText("Registerer ID");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
 
         txt_regisby.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txt_regisby.setPlaceholder("Enter registerer ID...");

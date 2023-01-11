@@ -211,7 +211,6 @@ public class ViewBooks extends javax.swing.JFrame {
         
         
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -256,7 +255,7 @@ public class ViewBooks extends javax.swing.JFrame {
                 rSButtonHover3ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSButtonHover3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 70, 20));
+        jPanel1.add(rSButtonHover3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 80, 20));
 
         jLabel1.setFont(new java.awt.Font("Shree Devanagari 714", 3, 12)); // NOI18N
         jLabel1.setText("Search by author");
@@ -271,7 +270,7 @@ public class ViewBooks extends javax.swing.JFrame {
                 txt_authorFocusLost(evt);
             }
         });
-        jPanel1.add(txt_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 200, 30));
+        jPanel1.add(txt_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 200, 30));
 
         rSButtonHover1.setBackground(new java.awt.Color(51, 51, 51));
         rSButtonHover1.setText("Search");
@@ -281,7 +280,7 @@ public class ViewBooks extends javax.swing.JFrame {
                 rSButtonHover1ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSButtonHover1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 70, 20));
+        jPanel1.add(rSButtonHover1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 80, 20));
 
         jLabel3.setFont(new java.awt.Font("Shree Devanagari 714", 3, 12)); // NOI18N
         jLabel3.setText("Search by publisher");
@@ -296,7 +295,7 @@ public class ViewBooks extends javax.swing.JFrame {
                 txt_publisherFocusLost(evt);
             }
         });
-        jPanel1.add(txt_publisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 200, 30));
+        jPanel1.add(txt_publisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 200, 30));
 
         rSButtonHover2.setBackground(new java.awt.Color(204, 0, 51));
         rSButtonHover2.setText("Clear");
@@ -378,7 +377,7 @@ public class ViewBooks extends javax.swing.JFrame {
                 rSButtonHover4ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSButtonHover4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 70, 70, 20));
+        jPanel1.add(rSButtonHover4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 70, 80, 20));
 
         jLabel5.setFont(new java.awt.Font("Shree Devanagari 714", 3, 12)); // NOI18N
         jLabel5.setText("Search by floor");
@@ -412,7 +411,7 @@ public class ViewBooks extends javax.swing.JFrame {
                 rSButtonHover5ActionPerformed(evt);
             }
         });
-        jPanel1.add(rSButtonHover5, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, 70, 20));
+        jPanel1.add(rSButtonHover5, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, 80, 20));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
