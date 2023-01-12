@@ -36,7 +36,10 @@ CREATE TABLE `admin` (
   `username` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL,
-  `adminRole` varchar(4) NOT NULL DEFAULT 'part'
+  `adminRole` varchar(4) NOT NULL DEFAULT 'part',
+
+  -- RELATIONSHIPS --
+  PRIMARY KEY (adminId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -73,7 +76,12 @@ CREATE TABLE `book` (
   `availability` int(20) NOT NULL,
   `shelfNo` int(11) NOT NULL,
   `floor` int(11) NOT NULL,
-  `genre` varchar(150) NOT NULL
+  `genre` varchar(150) NOT NULL,
+
+  -- RELATIONSHIPS --
+  PRIMARY KEY (bookId),
+  FOREIGN KEY (publishId) REFERENCES publisher(publishId),
+  FOREIGN KEY (adminId) REFERENCES admin(adminId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -117,7 +125,7 @@ INSERT INTO `book` (`bookId`, `title`, `author_name`, `publishId`, `serialNo`, `
 (34, 'Catcher in the Rye', 'J. D. Salinger', 23, '9787543321724', 15, '2003-08-18', 9, 12, 978, 2, 'Novel, Bildungsroman, Young adult fiction, Coming-of-age story, First-person narrative, Literary realism'),
 (35, 'The Rules of Attraction', 'Bret Easton Ellis', 37, '9780679781486', 6, '2006-06-16', 3, 3, 979, 4, 'Novel, Satire, Literary fiction, Dark comedy'),
 (36, 'The Bell Jar', 'Sylvia Plath', 29, '9780061148514', 13, '2004-03-10', 8, 2, 978, 2, 'Novel, Autobiography, Autobiographical novel, Psychological Fiction, Roman à clef, Fictional Autobiography'),
-(37, 'Cat’s Cradle', 'Kurt Vonnegut', 17, '9780385333481', 22, '2013-07-15', 4, 17, 979, 3, 'Novel, Science fiction, Satire, Humor'),
+(37, 'Cats Cradle', 'Kurt Vonnegut', 17, '9780385333481', 22, '2013-07-15', 4, 17, 979, 3, 'Novel, Science fiction, Satire, Humor'),
 (38, 'Life of Pi', 'Yann Martel', 44, '9781786894243', 18, '2015-12-20', 7, 9, 979, 4, 'Novel, Adventure fiction, Psychological Fiction'),
 (39, 'The Rachel Papers', 'Martin Amis', 23, '9780679734581', 12, '2006-07-28', 5, 7, 979, 1, 'Fiction'),
 (40, 'On Beauty', 'Zadie Smith', 38, '9780143037743', 5, '2022-07-04', 6, 2, 978, 2, 'Novel, Romance novel, Domestic Fiction'),
@@ -146,7 +154,13 @@ CREATE TABLE `book_borrowreturn` (
   `borrowDate` date NOT NULL,
   `returnDate` date NOT NULL,
   `status` varchar(10) NOT NULL,
-  `fine` int(11) NOT NULL
+  `fine` int(11) NOT NULL,
+
+  -- RELATIONSHIPS --
+  PRIMARY KEY (borrowId),
+  FOREIGN KEY (userId) REFERENCES user(userId),
+  FOREIGN KEY(bookId) REFERENCES book(bookId),
+  FOREIGN KEY (adminId) REFERENCES admin(adminId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -190,7 +204,10 @@ CREATE TABLE `publisher` (
   `email` varchar(50) NOT NULL,
   `city` varchar(20) NOT NULL,
   `country` varchar(20) NOT NULL,
-  `zip` varchar(11) NOT NULL
+  `zip` varchar(11) NOT NULL,
+
+  -- RELATIONSHIPS --
+  PRIMARY KEY (publishId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -236,7 +253,10 @@ CREATE TABLE `user` (
   `birthday` date NOT NULL,
   `email` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL,
-  `regisDate` date NOT NULL
+  `regisDate` date NOT NULL,
+
+  -- RELATIONSHIPS --
+  PRIMARY KEY (userId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -294,44 +314,6 @@ INSERT INTO `user` (`userId`, `userFname`, `userLname`, `birthday`, `email`, `ad
 ('4244044808', 'Lauren', 'Barnes', '2016-03-11', 'laurenbarnes@mail.com', 'Jl RS Fatmawati 74 Jl RS Fatmawati 74', '2022-09-04'),
 ('4261244644', 'Chad', 'Hall', '2016-08-30', 'chadhall@mail.com', 'JL. Mega Kuningan Lot 5.1 Menara Rajawali Lt 27 12950', '2022-03-24'),
 ('4262544917', 'Courtney', 'Morton', '2016-09-12', 'courtneymorton@mail.com', 'Jl Jend Sudirman Kav 61-62 Summitmas Ii Lt 15', '2022-12-22');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`adminId`);
-
---
--- Indexes for table `book`
---
-ALTER TABLE `book`
-  ADD PRIMARY KEY (`bookId`);
-
---
--- Indexes for table `book_borrowreturn`
---
-ALTER TABLE `book_borrowreturn`
-  ADD PRIMARY KEY (`borrowId`);
-
---
--- Indexes for table `publisher`
---
-ALTER TABLE `publisher`
-  ADD PRIMARY KEY (`publishId`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD UNIQUE KEY `userId` (`userId`);
-
---
--- AUTO_INCREMENT for dumped tables
---
 
 --
 -- AUTO_INCREMENT for table `admin`
