@@ -15,7 +15,7 @@ The objective of this database project is to design and implement a functional l
 > **You can check the screenshots of User Interface [here]().**
 
 ### Entity Relational Diagram
-
+![ERD Image](ERD.png)
 
 ### Contributors
 * Alysha Puti Maulidina
