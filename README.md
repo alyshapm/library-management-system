@@ -7,11 +7,15 @@ This repository is a part of the Database Technology final project requirements.
 ## Project descrption
 The objective of this database project is to design and implement a functional library management system using a SQL database and a graphical user interface (GUI) implemented in Java using the JFrame class. The system will allow library staff to easily store, access, and update information about books, members, and returns. It will also provide a user-friendly interface for admins to search for and request books for users. The ultimate goal is to improve the efficiency and effectiveness of the library's operations and enhance the user experience for both staff and members.
 
-[![PPT](https://img.shields.io/static/v1.svg?label=Project&message=PPT&logo=microsoft-powerpoint&style=social)](https://github.com/vinitshahdeo/Library-Management-System/raw/master/PPTs/ONLINE%20LIBRARY%20MANAGEMENT%20SYSTEM.pptx) [![report](https://img.shields.io/static/v1.svg?label=Project&message=Report&logo=microsoft-word&style=social)](https://github.com/vinitshahdeo/Library-Management-System/raw/master/PROJECT%20REPORT/LIBRARY%20Management%20System%20Report.pdf)
+[![PPT](https://img.shields.io/static/v1.svg?label=Project&message=PPT&logo=microsoft-powerpoint&style=social)]()
+[![report](https://img.shields.io/static/v1.svg?label=Project&message=Report&logo=microsoft-word&style=social)]()
 
-> **You can download the report [here](https://github.com/vinitshahdeo/Library-Management-System/raw/master/PROJECT%20REPORT/LIBRARY%20Management%20System%20Report.pdf). To download the presentation, [click here](https://github.com/vinitshahdeo/Library-Management-System/raw/master/PPTs/ONLINE%20LIBRARY%20MANAGEMENT%20SYSTEM.pptx).**
+> **You can download the report [here](). To download the presentation, [click here]().**
 
-> **You can check the screenshots of User Interface [here](https://github.com/vinitshahdeo/Library-Management-System/tree/master/screenshots).**
+> **You can check the screenshots of User Interface [here]().**
+
+### Entity Relational Diagram
+
 
 ### Contributors
 * Alysha Puti Maulidina
