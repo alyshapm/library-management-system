@@ -18,9 +18,9 @@ The objective of this database project is to design and implement a functional l
 ![ERD Image](ERD.png)
 
 ### Contributors
-* Alysha Puti Maulidina
-* Kimberly Mazel
-* Chellshe Love Simorchelle
+* Alysha Puti Maulidina (2502005906)
+* Kimberly Mazel (2502022250)
+* Chellshe Love Simorchelle (2502043040)
 
 
 ## Modules
