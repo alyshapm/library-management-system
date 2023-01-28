@@ -92,7 +92,7 @@ public class ViewOverdue extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Shree Devanagari 714", 1, 18)); // NOI18N
-        jLabel2.setText("LMS - View Overudue Books");
+        jLabel2.setText("LMS - View Overdue Books");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, -20, 270, 100));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
